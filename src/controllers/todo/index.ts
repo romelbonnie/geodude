@@ -51,4 +51,19 @@ const updateTodo = async (req: Request, res: Response) => {
   return res.status(200).json({ status: 200, message: 'Todo updated.' });
 };
 
-export default { getTodos, createTodo, updateTodo };
+const removeTodo = async (req: Request, res: Response) => {
+  console.log('REMOVE_TODO START: ', req.body);
+  const { id } = req.body;
+
+  try {
+    await TodoModel.deleteOne({ _id: id });
+    console.log('Todo deleted.');
+  } catch (error) {
+    console.log('REMOVE_TODO ERROR: ', error);
+    return res.status(500).json({ message: 'Something went wrong!' });
+  }
+
+  return res.status(200).json({ status: 200, message: 'Todo removed.' });
+};
+
+export default { getTodos, createTodo, updateTodo, removeTodo };
