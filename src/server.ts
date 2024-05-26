@@ -3,7 +3,7 @@ import morgan from 'morgan';
 import dotenv from 'dotenv';
 
 import { dbconnect } from './config/database';
-import defaultRouter from './routes';
+import { homeRouter, todoRouter } from './routes';
 
 dotenv.config();
 const server = express();
@@ -12,7 +12,11 @@ server.use(morgan('dev'));
 dbconnect();
 const PORT = process.env.PORT || 5000;
 
-server.use('/', defaultRouter);
+server.use(express.json());
+server.use(express.urlencoded({ extended: true }));
+
+server.use('/', homeRouter);
+server.use('/todo', todoRouter);
 
 server.use((req, res) => {
   console.log(req.params);

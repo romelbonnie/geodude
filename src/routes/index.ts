@@ -1,10 +1,12 @@
 import express from 'express';
 
-const router = express.Router();
+import todoRouter from './todo';
 
-router.get('', (req, res) => {
+const homeRouter = express.Router();
+
+homeRouter.get('', (req, res) => {
   console.log(req.params);
   return res.status(200).send('Hello World!');
 });
 
-export default router;
+export { homeRouter, todoRouter };
