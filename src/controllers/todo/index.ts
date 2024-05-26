@@ -29,7 +29,26 @@ const createTodo = async (req: Request, res: Response) => {
     return res.status(500).json({ message: 'Something went wrong!' });
   }
 
-  return res.status(200).json({ message: 'Success' });
+  return res.status(200).json({ status: 200, message: 'Todo created.' });
 };
 
-export default { getTodos, createTodo };
+const updateTodo = async (req: Request, res: Response) => {
+  console.log('UPDATE_TODO START: ', req.body);
+  const { id, title, description } = req.body;
+
+  if (!id) {
+    return res.status(400).json({ status: 400, message: 'Invalid todo item!' });
+  }
+
+  try {
+    await TodoModel.updateOne({ _id: id }, { title, description });
+    console.log('Todo updated!');
+  } catch (error) {
+    console.log('UPDATE_TODO ERROR: ', error);
+    return res.status(500).json({ message: 'Something went wrong!' });
+  }
+
+  return res.status(200).json({ status: 200, message: 'Todo updated.' });
+};
+
+export default { getTodos, createTodo, updateTodo };

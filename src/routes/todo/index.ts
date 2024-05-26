@@ -4,7 +4,8 @@ import { todoController } from '../../controllers';
 
 const router = express.Router();
 
-router.post('/create', todoController.createTodo);
 router.get('', todoController.getTodos);
+router.post('/create', todoController.createTodo);
+router.put('/update', todoController.updateTodo);
 
 export default router;
