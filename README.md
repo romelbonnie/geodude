@@ -3,7 +3,7 @@ A simple Backend API with CRUD operations (Typescript)
 
 ### Key Features
  - Todo list functionality includes adding, updating, removing and fetching todo items
-   - Use MongoDB for database
+   - Used MongoDB for database
 
 ### Local Setup
  1. **Clone the repository and navigate to the project directory**:
