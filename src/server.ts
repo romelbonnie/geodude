@@ -28,3 +28,5 @@ server.use((req, res) => {
 server.listen(PORT, () => {
   console.log(`Geodude API Running at PORT --> ${PORT}`);
 });
+
+export default server;
