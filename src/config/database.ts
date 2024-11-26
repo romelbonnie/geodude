@@ -7,7 +7,7 @@ const mongodbUri = process.env.MONGODB_URI || null;
 const dbconnect = () => {
   if (mongodbUri) {
     mongoose
-      .connect(mongodbUri)
+      .connect(mongodbUri, { dbName: 'ballyboy-staging' })
       .then(() => console.log('DB connection successfull!'))
       .catch((e) => console.log('DB connection error: ', e));
   }

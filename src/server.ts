@@ -3,14 +3,14 @@ import morgan from 'morgan';
 import dotenv from 'dotenv';
 import cors from 'cors';
 
-// import { dbconnect } from './config/database';
+import { dbconnect } from './config/database';
 import { homeRouter, todoRouter, spreadsheetRouter } from './routes';
 
 dotenv.config();
 const server = express();
 
 server.use(morgan('dev'));
-// dbconnect();
+dbconnect();
 const PORT = process.env.PORT || 5000;
 
 server.use(cors());
