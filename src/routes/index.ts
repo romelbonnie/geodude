@@ -1,6 +1,7 @@
 import express from 'express';
 
 import todoRouter from './todo';
+import spreadsheetRouter from './spreadsheet';
 
 const homeRouter = express.Router();
 
@@ -9,4 +10,4 @@ homeRouter.get('', (req, res) => {
   return res.status(200).send('Geodude!');
 });
 
-export { homeRouter, todoRouter };
+export { homeRouter, todoRouter, spreadsheetRouter };
